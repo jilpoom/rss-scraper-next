@@ -5,6 +5,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -14,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { FieldErrors, useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface HookFormTypes {
   email: string;
@@ -79,6 +81,14 @@ const Page = () => {
                   type="password"
                 ></Input>
               </div>
+              <Link
+                className="flex flex-col space-y-1.5"
+                href="http://localhost:10010/auths/kakao/redirect"
+              >
+                <Button className="bg-amber-300 text-black" type="button">
+                  KakaoTalk
+                </Button>
+              </Link>
               <div className="flex justify-between">
                 <Button
                   variant="outline"

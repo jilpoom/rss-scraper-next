@@ -1,9 +1,18 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button } from "../ui/button";
 import { fontFamily } from "tailwindcss/defaultTheme";
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Navbar = ({
   isLoggedIn,
@@ -20,9 +29,30 @@ const Navbar = ({
         </div>
         <div className="flex space-x-4">
           {isLoggedIn ? (
-            <Button variant="default" onClick={handleLogout}>
-              Logout
-            </Button>
+            <>
+              <Avatar>
+                <AvatarImage src="#default"></AvatarImage>
+                <AvatarFallback>JJY</AvatarFallback>
+              </Avatar>
+              <Dialog>
+                <DialogTrigger>
+                  <Button variant="default">Logout</Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogTitle>Logout</DialogTitle>
+                  <DialogDescription>Are you sure to Logout?</DialogDescription>
+                  <DialogFooter>
+                    <Button
+                      type="button"
+                      onClick={handleLogout}
+                      variant="outline"
+                    >
+                      Sure
+                    </Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            </>
           ) : (
             <>
               <Button variant="default">
